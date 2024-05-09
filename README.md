@@ -138,6 +138,23 @@ Open docker container terminal through PHPStorm. You will run all your commands 
 ![](images/d4.png)
 ![](images/d5.png)
 
+### Alternative
+
+Open docker container terminal using commands. We could use `docker exec -it [container_name] bash`, but container name will change as you make more and more `web` containers.
+
+In stead, use:
+```Bash
+docker compose exec -it web bash
+```
+It will always connect to the web container from your compose file.
+
+Use `exit` or `Ctrl-D` to return to your terminal.
+
+You can also execute command without going into bash like this:
+```Bash
+docker compose exec web php bin/console make:test
+```
+
 ### You can now start installing Symfony bundles with composer
 
 ## Symfony bundles
