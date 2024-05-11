@@ -204,12 +204,14 @@ Connecting to database through PHPStorm
 php bin/console make:controller
 php bin/console make:form
 php bin/console make:command
-php bin/console make:subscriber
+php bin/console make:listener # make:subscriber command is deprecated
 
 # User
 php bin/console make:user
+php bin/console make:auth
 php bin/console make:voter
 php bin/console make:registration-form
+php bin/console security:hash-password # Hash pass for fixture.
 
 # ORM
 php bin/console make:entity
@@ -221,17 +223,15 @@ php bin/console make:fixtures
 php bin/console doctrine:fixtures:load
 
 # Other
+php bin/console debug:router # Quickly see all route names
 php bin/console messenger:consume async
 php bin/console scheduler:consume
 
 # Tests
 php bin/console make:test
-# Run all tests
-php bin/phpunit
-# Run all tests in Form/ directory
-php bin/phpunit tests/Form
-# run tests for the UserType class
-php bin/phpunit tests/Form/UserTypeTest.php
+php bin/phpunit # Run all tests
+php bin/phpunit tests/Form # Run all tests in Form/ directory
+php bin/phpunit tests/Form/UserTypeTest.php # run tests for the UserType class
 
 ```
 
