@@ -168,10 +168,12 @@ docker compose exec web php bin/console make:test
 composer require form validator symfony/orm-pack;
 composer require --dev symfony/profiler-pack symfony/maker-bundle;
 # Medium Bundles
-composer require symfony/security-bundle symfony/http-client;
+composer require symfony/security-bundle symfony/twig-bundle;
 composer require --dev symfony/test-pack orm-fixtures;
 # Advanced Bundles
 composer require symfony/cache symfony/messenger symfony/workflow symfony/scheduler;
+# Fetch API
+composer require symfony/http-client;
 ```
 
 ## Database
