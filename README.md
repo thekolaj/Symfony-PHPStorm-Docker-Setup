@@ -169,7 +169,7 @@ composer require form validator symfony/orm-pack;
 composer require --dev symfony/profiler-pack symfony/maker-bundle;
 # Situational
 composer require symfony/http-client;
-composer require --dev symfony/test-pack symfony/phpunit-bridge;
+composer require --dev symfony/test-pack;
 # Advanced Bundles
 composer require symfony/security-bundle symfony/cache symfony/messenger symfony/workflow symfony/scheduler;
 ```
