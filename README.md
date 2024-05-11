@@ -20,7 +20,7 @@ This is just a quick summary of what you need to do. It will not cover why you'r
 - run `id`.
 - Find your users and groups `uid` and `gid` numbers
 - Add `user: "{uid}:{gid}"` to your `compose.yaml`
-  ```Bash
+  ```sh
   web:
     user: "1000:1000"
     build: .
@@ -49,7 +49,7 @@ This is just a quick summary of what you need to do. It will not cover why you'r
 
 - Open a terminal. Navigate you your project parent directory.
 - Copy command below. Replace PROJECT_FOLDER with project name, and execute.
-```bash
+```sh
 docker run --rm --interactive --tty --volume $PWD:/app \
     composer create-project symfony/skeleton --no-progress --no-interaction --ansi --ignore-platform-reqs PROJECT_FOLDER
 ```
@@ -143,7 +143,7 @@ Open docker container terminal through PHPStorm. You will run all your commands 
 Open docker container terminal using commands. We could use `docker exec -it [container_name] bash`, but container name will change as you make more and more `web` containers.
 
 In stead, use:
-```Bash
+```sh
 docker compose exec -it web bash
 ```
 It will always connect to the web container from your compose file.
@@ -151,7 +151,7 @@ It will always connect to the web container from your compose file.
 Use `exit` or `Ctrl-D` to return to your terminal.
 
 You can also execute command without going into bash like this:
-```Bash
+```sh
 docker compose exec web php bin/console make:test
 ```
 
@@ -163,15 +163,15 @@ docker compose exec web php bin/console make:test
 - Don't include docker from orm-pack.
 - You can copy and run multiple lines if they end with `;`
 
-```bash
+```sh
 # Basic Bundles
 composer require form validator symfony/orm-pack;
 composer require --dev symfony/profiler-pack symfony/maker-bundle;
-# Situational
-composer require symfony/http-client;
-composer require --dev symfony/test-pack;
+# Medium Bundles
+composer require symfony/security-bundle symfony/http-client;
+composer require --dev symfony/test-pack orm-fixtures;
 # Advanced Bundles
-composer require symfony/security-bundle symfony/cache symfony/messenger symfony/workflow symfony/scheduler;
+composer require symfony/cache symfony/messenger symfony/workflow symfony/scheduler;
 ```
 
 ## Database
@@ -199,7 +199,7 @@ Connecting to database through PHPStorm
 
 ## Useful Commands
 
-```bash
+```sh
 # Make
 php bin/console make:controller
 php bin/console make:form
