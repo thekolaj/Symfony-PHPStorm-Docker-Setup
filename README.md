@@ -171,7 +171,7 @@ composer require --dev symfony/profiler-pack symfony/maker-bundle;
 composer require symfony/security-bundle symfony/twig-bundle;
 composer require --dev symfony/test-pack orm-fixtures;
 # Advanced Bundles
-composer require symfony/cache symfony/messenger symfony/workflow symfony/scheduler;
+composer require symfony/cache symfony/messenger symfony/workflow symfony/scheduler symfony/mailer;
 # Fetch API
 composer require symfony/http-client;
 ```
