@@ -6,14 +6,18 @@ This is just a quick summary of what you need to do. It will not cover why you'r
 
 ## Notes and Errors.
 
-! Route names will contain `index.php`:
+### Route names will contain `index.php`:
 - Your home `'/'` route will look like this http://localhost:8080/index.php
 - `'/login'` route will look like this http://localhost:8080/index.php/login
 - Any input on how to fix this is appreciated.
 
-! Windows+WSL users:
+### Windows+WSL users:
+
+#### Overview
 - Use WSL, you will suffer severe performance issues if you don't.
 - WSL installation is not covered in this guide.
+
+#### Permissions
 - After creating a fresh project using docker, you might not be the directory owner. You'll know this if PHPStorm is throwing errors about not being able to save configuration.
 - Check file ownership by running `ls -la` in your WLS terminal in project root. Is should not say `root root` next to files.
 - Change dir ownership (recursively) by running `sudo chown -R USER: .` in project root.
@@ -27,8 +31,12 @@ This is just a quick summary of what you need to do. It will not cover why you'r
   ```
 - This is a quick fix so you don't need to update your file owner after creating anything with the `make:` command. Please contribute a better solution.
 
+#### Corrupt config
+- Sometimes, your '\.idea\workspace.xml' disappears when you open PHPStorm after shutdown/restart.
+- This issue is known for [3 years](https://youtrack.jetbrains.com/issue/IJPL-8341/Cannot-load-settings-from-file-.ideaworkspace.xml-content-truncated-when-have-projects-in-WSL).
 
-! Linux users:
+
+### Linux users:
 - In compose file `XDEBUG_CONFIG: client_host=host.docker.internal` might not work for you.
 - Try instead ` XDEBUG_CONFIG: remote_host=<hostname>` where `<hostname>` is replaced with results of `ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+'` command.
 - [More details](https://github.com/docker/for-linux/issues/264)
@@ -172,8 +180,12 @@ composer require symfony/security-bundle symfony/twig-bundle;
 composer require --dev symfony/test-pack orm-fixtures;
 # Advanced Bundles
 composer require symfony/cache symfony/messenger symfony/workflow symfony/scheduler symfony/mailer;
-# Fetch API
+# API
+composer require api
+composer require symfony/monolog-bundle
 composer require symfony/http-client;
+composer require symfony/serializer;
+composer require --dev dama/doctrine-test-bundle
 ```
 
 ## Database
@@ -234,6 +246,11 @@ php bin/console make:test
 php bin/phpunit # Run all tests
 php bin/phpunit tests/Form # Run all tests in Form/ directory
 php bin/phpunit tests/Form/UserTypeTest.php # run tests for the UserType class
+
+# Test database creation
+php bin/console --env=test doctrine:database:create
+php bin/console --env=test doctrine:migrations:migrate
+php bin/console --env=test doctrine:fixtures:load
 
 ```
 
